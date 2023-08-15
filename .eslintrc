@@ -1,0 +1,45 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "tsconfig.json",
+    "tsconfigRootDir": ".",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint/eslint-plugin",
+    "security",
+    "promise",
+    "prettier"
+  ],
+  "extends": [
+    "airbnb-base",
+    "airbnb-typescript/base",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "plugin:eslint-comments/recommended",
+    "plugin:security/recommended",
+    "plugin:promise/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "overrides": [
+    {
+      "files": ["test/**", "src/**/*.spec.js"],
+      "plugins": ["jest", "jest-formatting"],
+      "extends": [
+        "plugin:jest/recommended",
+        "plugin:jest-formatting/recommended"
+      ],
+      "rules": {
+        "jest/expect-expect": [
+          "error",
+          { "assertFunctionNames": ["expect", "request.**.expect"] }
+        ]
+      }
+    }
+  ],
+  "root": true,
+  "env": {
+    "node": true,
+    "jest": true
+  }
+}
